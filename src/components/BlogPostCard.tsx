@@ -24,7 +24,7 @@ export default function BlogPostCard({ post }: BlogPostCardProps) {
         <h3 className="text-xl font-semibold text-gray-900 mb-3 line-clamp-2">
           <Link 
             href={`/blog/${post.slug}`}
-            className="hover:text-accent-orange transition-colors"
+            className="hover:text-orange-500 transition-colors"
           >
             {post.title}
           </Link>
@@ -39,7 +39,7 @@ export default function BlogPostCard({ post }: BlogPostCardProps) {
             {post.tags.slice(0, 3).map((tag) => (
               <span 
                 key={tag}
-                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-accent-yellow-light text-gray-800"
+                className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-gray-800"
               >
                 {tag}
               </span>
@@ -49,7 +49,7 @@ export default function BlogPostCard({ post }: BlogPostCardProps) {
         
         <Link 
           href={`/blog/${post.slug}`}
-          className="inline-flex items-center text-accent-orange hover:text-secondary-600 font-medium transition-colors"
+          className="inline-flex items-center text-orange-500 hover:text-orange-600 font-medium transition-colors"
         >
           Read more
           <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -9,9 +9,31 @@ export const metadata: Metadata = {
     template: "%s | Engineering Leadership Blog",
   },
   description: "Insights on engineering leadership, modern DevOps practices, and human-centered team building. Building better teams, one post at a time.",
-  keywords: ["engineering leadership", "devops", "team building", "software engineering", "management"],
+  keywords: [
+    "engineering leadership", 
+    "devops", 
+    "team building", 
+    "software engineering", 
+    "management",
+    "leadership development",
+    "engineering management",
+    "team culture",
+    "purpose-driven leadership",
+    "human-centered design",
+    "engineering best practices"
+  ],
   authors: [{ name: "Vishal Kumar" }],
   creator: "Vishal Kumar",
+  publisher: "Vishal Kumar",
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
+  metadataBase: new URL("https://vk-blog.vercel.app"),
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -29,13 +51,18 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    nocache: false,
     googleBot: {
       index: true,
       follow: true,
+      noimageindex: false,
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
     },
+  },
+  verification: {
+    google: "your-google-verification-code", // Add your Google Search Console verification code
   },
 };
 

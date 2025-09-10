@@ -5,13 +5,45 @@ import BlogPostCard from '@/components/BlogPostCard';
 export default function Home() {
   const latestPosts = getLatestPosts(3);
 
+  // Structured data for the website
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Engineering Leadership Blog",
+    "description": "Insights on engineering leadership, modern DevOps practices, and human-centered team building. Building better teams, one post at a time.",
+    "url": "https://vk-blog.vercel.app",
+    "author": {
+      "@type": "Person",
+      "name": "Vishal Kumar",
+      "url": "https://vk-blog.vercel.app/about"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Engineering Leadership Blog",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://vk-blog.vercel.app/logo.svg"
+      }
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://vk-blog.vercel.app/blog?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  };
+
   return (
-    <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6 lg:px-8">
       {/* Hero Section */}
       <div className="text-center mb-16">
         <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl lg:text-6xl mb-6">
           Engineering Leadership
-          <span className="block text-accent-orange">That Matters</span>
+          <span className="block text-orange-500">That Matters</span>
         </h1>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
           Insights on building better teams, fostering purpose-driven engineering cultures, 
@@ -20,7 +52,7 @@ export default function Home() {
         <div className="mt-8">
           <Link 
             href="/blog"
-            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-accent-orange hover:bg-secondary-600 transition-colors"
+            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-orange-500 hover:bg-orange-600 transition-colors"
           >
             Read the Blog
             <svg className="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -36,7 +68,7 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-gray-900">Latest Insights</h2>
           <Link 
             href="/blog"
-            className="text-accent-orange hover:text-secondary-600 font-medium transition-colors"
+            className="text-orange-500 hover:text-orange-600 font-medium transition-colors"
           >
             View all posts →
           </Link>
@@ -56,7 +88,7 @@ export default function Home() {
       </div>
 
       {/* About Preview */}
-      <div className="bg-accent-yellow-light rounded-2xl p-8 text-center">
+      <div className="bg-orange-50 rounded-2xl p-8 text-center">
         <h3 className="text-2xl font-bold text-gray-900 mb-4">
           About This Blog
         </h3>
@@ -71,6 +103,7 @@ export default function Home() {
           Learn More
         </Link>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

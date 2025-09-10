@@ -1,9 +1,9 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
 
 :root {
   --background: #ffffff;
-  --foreground: #111827;
+  --foreground: #171717;
 }
 
 @theme inline {
@@ -30,17 +30,17 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #FFD54F;
+  background: #FF6B35;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #FFC107;
+  background: #E55A2B;
 }
 
 /* Focus styles for accessibility */
 *:focus {
-  outline: 2px solid #FFD54F;
+  outline: 2px solid #FF6B35;
   outline-offset: 2px;
 }
 

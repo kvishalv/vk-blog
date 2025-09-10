@@ -12,34 +12,47 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         accent: {
-          yellow: "#FFD54F",
-          orange: "#FF7043",
-          "yellow-light": "#FFF8E1",
-          "orange-light": "#FFE0B2",
+          orange: "#FF6B35", // Vibrant engineering orange
+          "orange-light": "#FFF4F0", // Very light orange background
+          "orange-dark": "#E55A2B", // Darker orange for hover states
+          blue: "#2563EB", // Professional blue accent
+          "blue-light": "#EFF6FF", // Light blue background
         },
         primary: {
-          50: "#FFF8E1",
-          100: "#FFECB3",
-          200: "#FFE082",
-          300: "#FFD54F",
-          400: "#FFCA28",
-          500: "#FFC107",
-          600: "#FFB300",
-          700: "#FFA000",
-          800: "#FF8F00",
-          900: "#FF6F00",
+          50: "#FFF4F0",
+          100: "#FFE4D6",
+          200: "#FFC9AD",
+          300: "#FFA882",
+          400: "#FF8757",
+          500: "#FF6B35", // Main vibrant orange
+          600: "#E55A2B",
+          700: "#CC4A21",
+          800: "#B33A17",
+          900: "#9A2A0D",
         },
         secondary: {
-          50: "#FFF3E0",
-          100: "#FFE0B2",
-          200: "#FFCC80",
-          300: "#FFB74D",
-          400: "#FFA726",
-          500: "#FF7043",
-          600: "#FF7043",
-          700: "#F57C00",
-          800: "#EF6C00",
-          900: "#E65100",
+          50: "#EFF6FF",
+          100: "#DBEAFE",
+          200: "#BFDBFE",
+          300: "#93C5FD",
+          400: "#60A5FA",
+          500: "#2563EB", // Professional blue
+          600: "#1D4ED8",
+          700: "#1E40AF",
+          800: "#1E3A8A",
+          900: "#1E3A8A",
+        },
+        neutral: {
+          50: "#FAFAFA",
+          100: "#F5F5F5",
+          200: "#E5E5E5",
+          300: "#D4D4D4",
+          400: "#A3A3A3",
+          500: "#737373",
+          600: "#525252",
+          700: "#404040",
+          800: "#262626",
+          900: "#171717",
         },
       },
       fontFamily: {
@@ -50,36 +63,36 @@ const config: Config = {
         DEFAULT: {
           css: {
             maxWidth: "none",
-            color: "#374151",
+            color: "#404040",
             a: {
-              color: "#FF7043",
+              color: "#FF6B35",
               textDecoration: "none",
               fontWeight: "500",
               "&:hover": {
-                color: "#F57C00",
+                color: "#E55A2B",
                 textDecoration: "underline",
               },
             },
             h1: {
-              color: "#111827",
+              color: "#171717",
               fontWeight: "700",
             },
             h2: {
-              color: "#111827",
+              color: "#171717",
               fontWeight: "600",
             },
             h3: {
-              color: "#111827",
+              color: "#171717",
               fontWeight: "600",
             },
             blockquote: {
-              borderLeftColor: "#FFD54F",
-              backgroundColor: "#FFF8E1",
+              borderLeftColor: "#FF6B35",
+              backgroundColor: "#FFF4F0",
               padding: "1rem",
               borderRadius: "0.5rem",
             },
             code: {
-              backgroundColor: "#F3F4F6",
+              backgroundColor: "#F5F5F5",
               padding: "0.25rem 0.5rem",
               borderRadius: "0.25rem",
               fontSize: "0.875rem",
