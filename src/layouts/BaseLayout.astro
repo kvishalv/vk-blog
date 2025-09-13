@@ -5,35 +5,132 @@ export interface Props {
   title: string;
   description?: string;
   image?: string;
+  canonical?: string;
+  keywords?: string;
+  author?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  type?: string;
+  noindex?: boolean;
 }
 
-const { title, description = "Engineering Management, Unfiltered - Real stories from the trenches of tech leadership", image = "/og-image.jpg" } = Astro.props;
+const { 
+  title, 
+  description = "Engineering Management, Unfiltered - Real stories from the trenches of tech leadership", 
+  image = "/og-image.jpg",
+  canonical,
+  keywords = "engineering management, tech leadership, 1:1 meetings, team management, software engineering, leadership, management, engineering teams",
+  author = "Vishal",
+  publishedTime,
+  modifiedTime,
+  type = "website",
+  noindex = false
+} = Astro.props;
+
+const canonicalURL = canonical || Astro.url;
+const fullImageURL = new URL(image, Astro.url);
 ---
 
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/vk-logo.svg" />
     <meta name="generator" content={Astro.generator} />
     
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content={author} />
+    <meta name="robots" content={noindex ? "noindex,nofollow" : "index,follow"} />
+    <meta name="googlebot" content="index,follow" />
+    <meta name="bingbot" content="index,follow" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/svg+xml" href="/vk-logo.svg" />
+    <link rel="apple-touch-icon" href="/vk-logo.svg" />
+    <link rel="manifest" href="/manifest.json" />
+    
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={Astro.url} />
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(image, Astro.url)} />
+    <meta property="og:image" content={fullImageURL} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={title} />
+    <meta property="og:site_name" content="VK Blog - Engineering Leadership" />
+    <meta property="og:locale" content="en_US" />
+    {author && <meta property="og:author" content={author} />}
+    {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={Astro.url} />
+    <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={new URL(image, Astro.url)} />
+    <meta property="twitter:image" content={fullImageURL} />
+    <meta property="twitter:image:alt" content={title} />
+    <meta property="twitter:creator" content="@kvishalv" />
+    <meta property="twitter:site" content="@kvishalv" />
 
-    <title>{title}</title>
+    <!-- Additional SEO Meta Tags -->
+    <meta name="theme-color" content="#000000" />
+    <meta name="msapplication-TileColor" content="#000000" />
+    <meta name="application-name" content="VK Blog" />
+    <meta name="apple-mobile-web-app-title" content="VK Blog" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": type === "article" ? "Article" : "WebSite",
+        "name": title,
+        "description": description,
+        "url": canonicalURL,
+        "image": fullImageURL,
+        "author": {
+          "@type": "Person",
+          "name": author,
+          "url": "https://vishal.dev",
+          "sameAs": [
+            "https://linkedin.com/in/kvishalv",
+            "https://github.com/kvishalv"
+          ]
+        },
+        "publisher": {
+          "@type": "Person",
+          "name": author,
+          "url": "https://vishal.dev"
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": canonicalURL
+        },
+        "datePublished": publishedTime,
+        "dateModified": modifiedTime || publishedTime,
+        "headline": title,
+        "keywords": keywords,
+        "inLanguage": "en-US"
+      }
+    </script>
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- DNS Prefetch for performance -->
+    <link rel="dns-prefetch" href="//www.google-analytics.com" />
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
   </head>
   <body>
     <slot />

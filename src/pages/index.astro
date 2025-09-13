@@ -10,9 +10,19 @@ const posts = await getCollection('posts', ({ data }) => {
 
 // Sort posts by date, newest first, and take the first 5
 const sortedPosts = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime()).slice(0, 5);
+
+// SEO optimization for home page
+const title = "VK - Engineering Management, Unfiltered";
+const description = "Real stories from the trenches of tech leadership. Practical frameworks for engineering managers, 1:1 meeting guides, and team management insights.";
+const keywords = "engineering management, tech leadership, 1:1 meetings, team management, software engineering, leadership, management, engineering teams, management frameworks";
 ---
 
-<BaseLayout title="VK - Engineering Management, Unfiltered">
+<BaseLayout 
+  title={title}
+  description={description}
+  keywords={keywords}
+  canonical="https://vishal.dev"
+>
   <Header />
   
   <!-- Hero Section -->

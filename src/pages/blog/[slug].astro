@@ -17,9 +17,26 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await post.render();
+
+// SEO optimization
+const title = `${post.data.title} - VK Blog`;
+const description = post.data.description;
+const keywords = post.data.tags ? post.data.tags.join(', ') + ', engineering management, tech leadership' : 'engineering management, tech leadership';
+const publishedTime = post.data.date.toISOString();
+const canonical = new URL(`/blog/${post.slug}`, Astro.site);
+const image = post.data.image || '/og-image.jpg';
 ---
 
-<BaseLayout title={post.data.title + " - VK"} description={post.data.description}>
+<BaseLayout 
+  title={title}
+  description={description}
+  keywords={keywords}
+  author={post.data.author}
+  publishedTime={publishedTime}
+  type="article"
+  canonical={canonical.toString()}
+  image={image}
+>
   <Header />
   
   <main class="min-h-screen bg-white">
@@ -58,6 +75,40 @@ const { Content } = await post.render();
           {post.data.description}
         </p>
       </header>
+      
+      <!-- Structured Data for Blog Post -->
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": post.data.title,
+        "description": post.data.description,
+        "image": new URL(image, Astro.site),
+        "author": {
+          "@type": "Person",
+          "name": post.data.author,
+          "url": "https://vishal.dev",
+          "sameAs": [
+            "https://linkedin.com/in/kvishalv",
+            "https://github.com/kvishalv"
+          ]
+        },
+        "publisher": {
+          "@type": "Person",
+          "name": post.data.author,
+          "url": "https://vishal.dev"
+        },
+        "datePublished": publishedTime,
+        "dateModified": publishedTime,
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": canonical.toString()
+        },
+        "url": canonical.toString(),
+        "keywords": keywords,
+        "articleSection": "Engineering Leadership",
+        "wordCount": post.body.split(' ').length,
+        "inLanguage": "en-US"
+      })} />
       
       <!-- Article Content -->
       <div class="prose prose-lg max-w-none">

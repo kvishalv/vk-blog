@@ -10,9 +10,19 @@ const posts = await getCollection('posts', ({ data }) => {
 
 // Sort posts by date, newest first
 const sortedPosts = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+// SEO optimization for blog page
+const title = "Engineering Leadership Blog - VK";
+const description = "Read the latest insights on engineering management, team leadership, and technical management. Real stories and practical frameworks for engineering leaders.";
+const keywords = "engineering management blog, tech leadership articles, management insights, engineering team leadership, 1:1 meetings, team management";
 ---
 
-<BaseLayout title="Blog - VK">
+<BaseLayout 
+  title={title}
+  description={description}
+  keywords={keywords}
+  canonical="https://vishal.dev/blog"
+>
   <Header />
   
   <main class="min-h-screen bg-gradient-to-br from-gray-50 to-white">
