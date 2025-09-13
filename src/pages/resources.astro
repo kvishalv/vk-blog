@@ -1,0 +1,133 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="Resources - VK">
+  <Header />
+  
+  <main class="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+    <div class="max-w-4xl mx-auto px-6 py-16">
+      <div class="text-center mb-16">
+        <div class="w-24 h-24 bg-black rounded-full mx-auto mb-6 flex items-center justify-center text-white text-3xl">
+          🛠️
+        </div>
+        <h1 class="text-5xl font-bold text-gray-900 mb-4">Resources</h1>
+        <p class="text-xl text-gray-600 mb-8">Free templates, frameworks, and tools for engineering leaders</p>
+      </div>
+      
+      <!-- Featured Resource -->
+      <div class="bg-white rounded-2xl shadow-xl p-8 mb-12 border border-gray-100">
+        <div class="flex items-start gap-6">
+          <div class="flex-shrink-0">
+            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center text-white text-2xl">
+              💬
+            </div>
+          </div>
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">FREE</span>
+              <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">1:1 MEETINGS</span>
+            </div>
+            <h2 class="text-2xl font-bold text-gray-900 mb-3">1:1 Questions Framework</h2>
+            <p class="text-gray-600 mb-6 leading-relaxed">
+              A comprehensive collection of meaningful questions to transform your 1:1 meetings from checkbox exercises into powerful conversations that drive engagement and results.
+            </p>
+            <div class="flex flex-wrap gap-4 mb-6">
+              <div class="flex items-center text-sm text-gray-500">
+                <span class="w-2 h-2 bg-green-400 rounded-full mr-2"></span>
+                20+ proven questions
+              </div>
+              <div class="flex items-center text-sm text-gray-500">
+                <span class="w-2 h-2 bg-blue-400 rounded-full mr-2"></span>
+                5 categories
+              </div>
+              <div class="flex items-center text-sm text-gray-500">
+                <span class="w-2 h-2 bg-purple-400 rounded-full mr-2"></span>
+                Print-ready
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <a 
+                href="/resources/1on1-questions-framework.html" 
+                target="_blank"
+                class="bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors flex items-center gap-2"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                Download PDF
+              </a>
+              <a 
+                href="/blog/meaningful-1on1-questions" 
+                class="border border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
+              >
+                Read Full Article
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Coming Soon Section -->
+      <div class="text-center">
+        <h3 class="text-2xl font-bold text-gray-900 mb-4">More Resources Coming Soon</h3>
+        <p class="text-gray-600 mb-8 max-w-2xl mx-auto">
+          I'm building a comprehensive collection of free templates, frameworks, and tools to help engineering leaders succeed.
+        </p>
+        
+        <div class="grid md:grid-cols-2 gap-6 mb-12">
+          <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+            <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center text-orange-600 text-xl mb-4">
+              🎯
+            </div>
+            <h4 class="font-semibold text-gray-900 mb-2">Goal-Setting Framework</h4>
+            <p class="text-sm text-gray-600">Structured approach to setting and tracking team and individual goals</p>
+          </div>
+          
+          <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+            <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center text-green-600 text-xl mb-4">
+              📊
+            </div>
+            <h4 class="font-semibold text-gray-900 mb-2">Team Health Assessment</h4>
+            <p class="text-sm text-gray-600">Comprehensive tool to measure and improve team dynamics</p>
+          </div>
+          
+          <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+            <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center text-purple-600 text-xl mb-4">
+              📝
+            </div>
+            <h4 class="font-semibold text-gray-900 mb-2">Performance Review Template</h4>
+            <p class="text-sm text-gray-600">Structured framework for meaningful performance conversations</p>
+          </div>
+          
+          <div class="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600 text-xl mb-4">
+              🚀
+            </div>
+            <h4 class="font-semibold text-gray-900 mb-2">Career Development Plan</h4>
+            <p class="text-sm text-gray-600">Guide for mapping out growth paths for your team members</p>
+          </div>
+        </div>
+        
+        <div class="bg-white p-8 rounded-xl shadow-lg max-w-md mx-auto">
+          <h3 class="text-lg font-semibold text-gray-900 mb-4">Get notified when new resources are available</h3>
+          <p class="text-gray-600 mb-4 text-sm">Be the first to access new templates and frameworks.</p>
+          <div class="flex gap-3">
+            <input 
+              type="email" 
+              placeholder="Enter your email" 
+              class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-black focus:border-transparent"
+            />
+            <button class="bg-black text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition-colors">
+              Get Access
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

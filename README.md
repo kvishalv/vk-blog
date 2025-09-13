@@ -1,147 +1,122 @@
-# Engineering Leadership Blog
+# VK Blog
 
-A minimalist, purpose-driven blog built with Next.js, showcasing insights on engineering leadership, modern DevOps practices, and human-centered team building.
+A personal blog built with Astro, featuring insights on engineering leadership, team management, and technical leadership.
 
-## 🎯 Purpose
+## 🚀 About
 
-This blog serves as a platform to share original writing on engineering leadership, inspired by the tones of **Simon Sinek**, **Lara Hogan**, and **Cate Huston**. The goal is to create a space that feels both professional and personal—a blend of technical clarity and authentic leadership insights.
+This blog shares real stories and practical frameworks for engineering leaders, covering topics like:
+- 1:1 meeting best practices
+- Leadership mistakes and lessons learned
+- Team building and management
+- Technical leadership insights
 
-## 🚀 Tech Stack
+## 🛠️ Tech Stack
 
-- **Framework**: Next.js 14 with App Router
-- **Styling**: Tailwind CSS with custom design system
-- **Content**: Markdown-based blog posts with frontmatter
-- **Typography**: Inter font family
-- **SEO**: OpenGraph metadata, Twitter cards, custom meta tags
-- **Deployment**: Optimized for Vercel
-
-## 🎨 Design Language
-
-- **Vibe**: Minimalist, warm, professional
-- **Colors**: Soft yellow (#FFD54F) and orange (#FF7043) accents
-- **Typography**: Clean, readable Inter font
-- **Layout**: Responsive, grid-based design
-- **Accessibility**: High contrast, keyboard navigation support
+- **Framework**: [Astro](https://astro.build/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Content**: MDX for blog posts
+- **Deployment**: Static site generation
 
 ## 📁 Project Structure
 
 ```
-src/
-├── app/                    # Next.js App Router pages
-│   ├── blog/              # Blog listing and individual posts
-│   ├── about/             # About page
-│   └── layout.tsx         # Root layout with metadata
-├── components/            # Reusable React components
-│   ├── Header.tsx         # Site navigation
-│   ├── Footer.tsx         # Site footer
-│   └── BlogPostCard.tsx   # Blog post preview card
-├── lib/                   # Utility functions
-│   ├── blog.ts           # Blog post data fetching
-│   └── markdown.ts       # Markdown processing
-└── types/                 # TypeScript type definitions
-    └── blog.ts           # Blog post interfaces
-
-content/
-└── posts/                # Markdown blog posts
-    └── why-the-code.md   # Sample blog post
-```
-
-## 📝 Content Management
-
-Blog posts are written in Markdown with frontmatter metadata:
-
-```markdown
----
-title: "Post Title"
-date: "2024-01-15"
-excerpt: "Brief description of the post"
-tags: ["leadership", "engineering"]
-published: true
-audioUrl: "optional-audio-file.mp3"
----
-
-# Your content here...
+/
+├── public/                 # Static assets
+│   ├── resources/         # Downloadable resources
+│   └── images/           # Blog images
+├── src/
+│   ├── components/       # Reusable Astro components
+│   ├── content/         # Blog posts and content config
+│   │   └── posts/       # MDX blog posts
+│   ├── layouts/         # Page layouts
+│   ├── pages/           # Route pages
+│   └── styles/          # Global styles
+└── package.json
 ```
 
 ## 🚀 Getting Started
 
-1. **Install dependencies**:
-   ```bash
-   npm install
-   ```
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
 
-2. **Run development server**:
-   ```bash
-   npm run dev
-   ```
+### Installation
 
-3. **Open your browser**:
-   Navigate to [http://localhost:3000](http://localhost:3000)
+1. Clone the repository:
+```bash
+git clone https://github.com/kvishalv/vk-blog.git
+cd vk-blog
+```
 
-## 📖 Writing New Posts
+2. Install dependencies:
+```bash
+npm install
+```
 
-1. Create a new `.md` file in `content/posts/`
-2. Add frontmatter with required metadata
-3. Write your content in Markdown
-4. The post will automatically appear in the blog listing
+3. Start the development server:
+```bash
+npm run dev
+```
 
-## 🎯 Sample Content
+4. Open [http://localhost:4321](http://localhost:4321) in your browser.
 
-The blog includes a sample post: **"Why the Code? — Starting With Purpose in Engineering Leadership"** - inspired by Simon Sinek's "Start With Why" framework, exploring how engineering leaders can foster purpose-driven teams.
+## 📝 Available Scripts
 
-## 🔧 Customization
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 
-### Colors
-Update the color palette in `tailwind.config.ts`:
-- `accent-yellow`: #FFD54F
-- `accent-orange`: #FF7043
-- `accent-yellow-light`: #FFF8E1
-- `accent-orange-light`: #FFE0B2
+## 📚 Content Management
 
-### Typography
-The site uses Inter font family. To change fonts, update:
-- `tailwind.config.ts` (font family configuration)
-- `src/app/globals.css` (Google Fonts import)
+### Adding New Blog Posts
 
-### SEO
-Update metadata in `src/app/layout.tsx`:
-- Site title and description
-- OpenGraph settings
-- Twitter card configuration
-- Author information
+1. Create a new `.mdx` file in `src/content/posts/`
+2. Add frontmatter with required fields:
+```yaml
+---
+title: "Your Post Title"
+description: "Brief description of your post"
+date: "2024-01-01"
+author: "Vishal"
+tags: ["leadership", "management"]
+draft: false
+---
+```
 
-## 🚀 Deployment
+### Adding Resources
 
-The site is optimized for Vercel deployment:
+1. Add downloadable files to `public/resources/`
+2. Update the Resources page in `src/pages/resources.astro`
 
-1. **Connect to Vercel**:
-   ```bash
-   npx vercel
-   ```
+## 🎨 Customization
 
-2. **Deploy**:
-   ```bash
-   npx vercel --prod
-   ```
+- **Styling**: Modify `src/styles/global.css` and `tailwind.config.mjs`
+- **Layout**: Update components in `src/components/` and `src/layouts/`
+- **Content**: Configure content collections in `src/content/config.ts`
 
-## 🔮 Future Enhancements
+## 📄 Resources
 
-- [ ] Audio player for blog posts
-- [ ] Newsletter signup integration
-- [ ] Dark/light theme toggle
-- [ ] Search functionality
-- [ ] Comment system
-- [ ] RSS feed
-- [ ] CMS integration (Notion/MDX)
+The blog includes free downloadable resources for engineering leaders:
+- 1:1 Questions Framework
+- More resources coming soon...
+
+## 🤝 Contributing
+
+This is a personal blog, but feel free to:
+- Report issues
+- Suggest improvements
+- Share feedback
+
+## 📞 Connect
+
+- **LinkedIn**: [kvishalv](https://linkedin.com/in/kvishalv)
+- **GitHub**: [kvishalv](https://github.com/kvishalv)
+- **Blog**: [vishal.dev](https://vishal.dev)
 
 ## 📄 License
 
 This project is open source and available under the [MIT License](LICENSE).
-
-## 🤝 Contributing
-
-This is a personal blog, but feedback and suggestions are welcome! Feel free to open issues or submit pull requests for improvements.
-
----
-
-**Building better teams, one post at a time.** 🚀

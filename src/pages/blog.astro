@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('posts', ({ data }) => {
+  return !data.draft;
+});
+
+// Sort posts by date, newest first
+const sortedPosts = posts.sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+---
+
+<BaseLayout title="Blog - VK">
+  <Header />
+  
+  <main class="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+    <div class="max-w-4xl mx-auto px-6 py-20">
+      <div class="text-center mb-16">
+        <h1 class="text-5xl font-bold text-gray-900 mb-4">What I'm Writing About</h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Real stories from the trenches of engineering leadership. No corporate fluff, just honest experiences and practical advice.
+        </p>
+      </div>
+      
+      <div class="space-y-8">
+        {sortedPosts.map((post) => (
+          <article class="bg-white p-8 rounded-xl border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-200">
+            <div class="flex items-start justify-between mb-4">
+              <div class="flex-1">
+                <h2 class="text-2xl font-semibold text-gray-900 mb-3 hover:text-gray-700 transition-colors">
+                  <a href={"/blog/" + post.slug}>{post.data.title}</a>
+                </h2>
+                <p class="text-gray-600 leading-relaxed mb-4">
+                  {post.data.description}
+                </p>
+                <div class="flex items-center gap-4 text-sm text-gray-500">
+                  <span>{post.data.date.toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                  })}</span>
+                  <span>•</span>
+                  <span>{post.data.author}</span>
+                  {post.data.tags && (
+                    <>
+                      <span>•</span>
+                      <div class="flex gap-2">
+                        {post.data.tags.map(tag => (
+                          <span class="px-2 py-1 bg-gray-100 text-gray-600 rounded text-xs">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </>
+                  )}
+                </div>
+              </div>
+            </div>
+            <a 
+              href={"/blog/" + post.slug} 
+              class="inline-block text-gray-900 font-semibold hover:text-gray-700 transition-colors"
+            >
+              Read more →
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

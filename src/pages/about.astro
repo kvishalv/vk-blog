@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout title="About - VK">
+  <Header />
+  
+  <main class="min-h-screen bg-gradient-to-br from-gray-50 to-white">
+    <div class="max-w-4xl mx-auto px-6 py-20">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <h1 class="text-4xl font-bold text-gray-900 mb-6">About Me</h1>
+          <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+            I'm an engineering leader who's been in the trenches of tech management for over a decade. I've made every mistake in the book, learned from them, and now I share those lessons with other leaders.
+          </p>
+          <p class="text-lg text-gray-600 mb-6 leading-relaxed">
+            My approach is simple: no corporate fluff, no buzzwords, just honest experiences and practical advice that actually works in the real world.
+          </p>
+          <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+            I believe engineering leadership doesn't have to be complicated. Through honest stories and hard-learned lessons, I help leaders build teams that actually work.
+          </p>
+          
+          <div class="flex gap-4">
+            <a 
+              href="https://www.linkedin.com/in/kvishalv" 
+              class="inline-block bg-black text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-800 transition-colors"
+            >
+              Connect on LinkedIn
+            </a>
+            <a 
+              href="https://github.com/kvishalv" 
+              class="inline-block border border-gray-300 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
+            >
+              View GitHub
+            </a>
+          </div>
+        </div>
+        
+        <div class="flex justify-center">
+          <img 
+            src="https://github.com/kvishalv.png" 
+            alt="Vishal Kannankara" 
+            class="w-80 h-80 rounded-xl shadow-lg object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</BaseLayout>

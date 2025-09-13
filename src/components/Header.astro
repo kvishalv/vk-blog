@@ -1,0 +1,105 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<header class="border-b border-gray-200 sticky top-0 bg-white z-50">
+  <nav class="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
+    <a href="/" class="flex items-center">
+      <img src="/vk-logo.svg" alt="VK" class="w-8 h-8" />
+    </a>
+    
+    <ul class="hidden md:flex space-x-8">
+      <li>
+        <a 
+          href="/" 
+          class={`font-medium transition-colors ${
+            currentPath === '/' 
+              ? 'text-gray-900 font-semibold' 
+              : 'text-gray-600 hover:text-gray-900'
+          }`}
+        >
+          Home
+        </a>
+      </li>
+      <li>
+        <a 
+          href="/blog" 
+          class={`font-medium transition-colors ${
+            currentPath.startsWith('/blog') 
+              ? 'text-gray-900 font-semibold' 
+              : 'text-gray-600 hover:text-gray-900'
+          }`}
+        >
+          Blog
+        </a>
+      </li>
+      <li>
+        <a 
+          href="/about" 
+          class={`font-medium transition-colors ${
+            currentPath === '/about' 
+              ? 'text-gray-900 font-semibold' 
+              : 'text-gray-600 hover:text-gray-900'
+          }`}
+        >
+          About
+        </a>
+      </li>
+      <li>
+        <a 
+          href="/resources" 
+          class={`font-medium transition-colors ${
+            currentPath === '/resources' 
+              ? 'text-gray-900 font-semibold' 
+              : 'text-gray-600 hover:text-gray-900'
+          }`}
+        >
+          Resources
+        </a>
+      </li>
+      <li>
+        <a 
+          href="/contact" 
+          class={`font-medium transition-colors ${
+            currentPath === '/contact' 
+              ? 'text-gray-900 font-semibold' 
+              : 'text-gray-600 hover:text-gray-900'
+          }`}
+        >
+          Contact
+        </a>
+      </li>
+    </ul>
+
+    <!-- Mobile menu button -->
+    <button class="md:hidden p-2" id="mobile-menu-button">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div class="md:hidden hidden border-t border-gray-200 bg-white" id="mobile-menu">
+    <div class="px-6 py-4 space-y-4">
+      <a href="/" class="block font-medium text-gray-600 hover:text-gray-900">Home</a>
+      <a href="/blog" class="block font-medium text-gray-600 hover:text-gray-900">Blog</a>
+      <a href="/about" class="block font-medium text-gray-600 hover:text-gray-900">About</a>
+      <a href="/resources" class="block font-medium text-gray-600 hover:text-gray-900">Resources</a>
+      <a href="/contact" class="block font-medium text-gray-600 hover:text-gray-900">Contact</a>
+    </div>
+  </div>
+</header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuButton && mobileMenu) {
+      mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+  });
+</script>
