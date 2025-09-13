@@ -9,6 +9,7 @@ const posts = defineCollection({
     author: z.string().default('Vishal'),
     tags: z.array(z.string()).optional(),
     image: z.string().optional(),
+    keywords: z.string().optional(),
     draft: z.boolean().default(false),
   }),
 });

@@ -21,7 +21,10 @@ const { Content } = await post.render();
 // SEO optimization
 const title = `${post.data.title} - VK Blog`;
 const description = post.data.description;
-const keywords = post.data.tags ? post.data.tags.join(', ') + ', engineering management, tech leadership' : 'engineering management, tech leadership';
+const customKeywords = post.data.keywords || '';
+const tagKeywords = post.data.tags ? post.data.tags.join(', ') : '';
+const baseKeywords = 'engineering management, tech leadership, software engineering';
+const keywords = [customKeywords, tagKeywords, baseKeywords].filter(Boolean).join(', ');
 const publishedTime = post.data.date.toISOString();
 const canonical = new URL(`/blog/${post.slug}`, Astro.site);
 const image = post.data.image || '/og-image.jpg';
@@ -107,7 +110,37 @@ const image = post.data.image || '/og-image.jpg';
         "keywords": keywords,
         "articleSection": "Engineering Leadership",
         "wordCount": post.body.split(' ').length,
-        "inLanguage": "en-US"
+        "inLanguage": "en-US",
+        "about": [
+          {
+            "@type": "Thing",
+            "name": "Engineering Management"
+          },
+          {
+            "@type": "Thing", 
+            "name": "Technical Leadership"
+          }
+        ],
+        "mentions": post.data.tags?.map(tag => ({
+          "@type": "Thing",
+          "name": tag
+        })) || []
+      })} />
+      
+      <!-- Additional SEO: FAQ Schema for better search results -->
+      <script type="application/ld+json" set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": `What is ${post.data.title.toLowerCase()}?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": post.data.description
+            }
+          }
+        ]
       })} />
       
       <!-- Article Content -->

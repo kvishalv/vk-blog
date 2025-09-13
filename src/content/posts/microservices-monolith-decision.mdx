@@ -1,0 +1,66 @@
+---
+title: "Why we migrated back from microservices to a monolith"
+description: "How I led our team through a premature microservices migration and the lessons learned. A deep dive into architectural decision-making, system design, and when to choose monoliths over microservices."
+date: "2023-11-15"
+author: "Vishal"
+tags: ["architecture", "microservices", "system-design", "scaling", "technical-leadership", "monolith", "distributed-systems", "engineering-management"]
+draft: false
+image: "/og-image.jpg"
+keywords: "microservices vs monolith, system architecture, distributed systems, technical leadership, system design, scaling architecture, startup engineering"
+---
+
+It was 2 AM on a Tuesday when I got the call. Payments were failing, users were seeing errors, and notifications had been silently broken for hours. What was meant to make us scalable and reliable—microservices—had become our biggest liability.  
+
+This is the story of how a premature migration nearly broke us, and the lessons I learned about architectural decision-making.  
+
+## The beginning: A monolith that worked  
+We started with a simple monolith that handled everything—auth, payments, notifications, analytics. It was fast, stable, and easy for a small team to manage.  
+
+## The pressure to "scale"  
+But pressure mounted: growth targets, ambitious roadmaps, and the constant drumbeat of "modernization." Everyone wanted to know our scalability strategy. Articles about Netflix and Uber loomed large. Microservices felt like the only respectable choice.  
+
+## The decision: Go microservices  
+The promises were tempting: independent scaling, tech diversity, team autonomy, fault isolation, future-proofing. We laid out a 10-month migration plan, starting with user services and moving to payments, notifications, and analytics.  
+
+## What went wrong  
+The reality was painful:  
+
+- **Latency & inconsistency**: Every user action triggered network calls, data was scattered across databases, and errors leaked to users.  
+- **Distributed transactions**: Payments suffered from partial failures, rollbacks, and degraded performance.  
+- **Cascading failures**: One service outage could take down the whole system.  
+- **Debugging hell**: Tracing a simple login meant digging across gateways, services, and databases.  
+- **Deployment overhead**: Fixing a bug meant coordinating multiple services and databases.  
+
+The breaking point came when we lost revenue to duplicate transactions caused by network timeouts.  
+
+## The analysis  
+Looking back, the real problems were clear:  
+
+1. **We solved the wrong problem.** The monolith could handle scale. The bottleneck was development velocity.  
+2. **We ignored complexity.** Microservices multiplied points of failure.  
+3. **We lacked operational maturity.** No service mesh, tracing, or proper tooling.  
+4. **We broke the wrong boundaries.** We split technical components instead of business domains.  
+
+## The pivot: Back to the monolith  
+We consolidated back into a monolith, aligning code with business domains: user management, financial operations, communication, analytics.  
+
+Results were immediate:  
+- **Performance**: Response times dropped from 500ms to 50ms.  
+- **Velocity**: Fixes and features shipped in hours, not days.  
+- **Simplicity**: Single pipeline, unified logs, easier debugging.  
+- **Business impact**: Stable payments, happier users, more productive engineers.  
+
+## Lessons learned  
+- Start with the monolith—it can scale farther than you think.  
+- Split by business domains, not technical components.  
+- Measure what matters: velocity, reliability, outcomes.  
+- Build operational maturity before considering microservices.  
+- Base decisions on data, not trends.  
+
+## Today  
+We run a structured monolith that’s fast, reliable, and maintainable. Microservices aren’t off the table forever, but we’ll only go there when there’s real need—and with the right maturity.  
+
+The best architecture isn’t the trendiest one. It’s the one that solves your problems and moves your business forward.  
+
+---  
+*Ever made an architectural decision you regretted? I’d love to hear your lessons. Find me on [LinkedIn](https://www.linkedin.com/in/kvishalv) or [GitHub](https://github.com/kvishalv).*  
