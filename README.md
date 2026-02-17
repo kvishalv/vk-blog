@@ -115,7 +115,7 @@ This is a personal blog, but feel free to:
 
 - **LinkedIn**: [kvishalv](https://linkedin.com/in/kvishalv)
 - **GitHub**: [kvishalv](https://github.com/kvishalv)
-- **Blog**: [vishal.dev](https://vishal.dev)
+- **Substack**: [vishalarchive](https://vishalsarchive.substack.com/)
 
 ## 📄 License
 
